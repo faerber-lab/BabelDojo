@@ -2,9 +2,9 @@
 
 **Do prompt-injection defenses for LLM agents survive outside English?**
 
-Live site: **https://faerber-lab.github.io/BabelDojo/**
+Live site: **https://faerber-lab.github.io/projects/babeldojo/**
 
-<a href="https://faerber-lab.github.io/BabelDojo/"><img src="assets/qr.png" alt="QR code linking to the BabelDojo site" width="180"></a>
+<a href="https://faerber-lab.github.io/projects/babeldojo/"><img src="assets/qr.png" alt="QR code linking to the BabelDojo site" width="180"></a>
 
 ## The project
 
@@ -40,15 +40,30 @@ python3 -m http.server 4173
 
 Then open http://localhost:4173.
 
+## Where the site is published
+
+The page is served from the lab website, in the `projects/babeldojo/` folder of [faerber-lab/faerber-lab.github.io](https://github.com/faerber-lab/faerber-lab.github.io). This repository holds the source. The copy on the lab website is generated from it, so edit here and re-export:
+
+```bash
+pip install segno
+python tools/export_site.py /tmp/babeldojo --url https://faerber-lab.github.io/projects/babeldojo/
+```
+
+Copy the result over `projects/babeldojo/` in the lab website repository and open a pull request there.
+
+The lab website is a Jekyll site that minifies every `.css` and `.js` file it builds. The export renames the stylesheet and script to `*.min.css` / `*.min.js`, which that build copies through untouched. The content is not minified.
+
+This repository's own GitHub Pages site serves only `docs/`, a redirect from the earlier address (`faerber-lab.github.io/BabelDojo/`) to the current one.
+
 ## Regenerate the QR code
 
 ```bash
 pip install segno
-python tools/make_qr.py                # default: the GitHub Pages URL
+python tools/make_qr.py                # default: the address on the lab website
 python tools/make_qr.py https://example.org/other-url
 ```
 
-This writes `assets/qr.svg` (used on the page) and `assets/qr.png` (for slides and posters).
+This writes `assets/qr.svg` (used on the page) and `assets/qr.png` (for slides and posters). If the address changes, also update the canonical link and share URL in `index.html` and `SITE_URL` in `assets/app.js`; the export script does this for the exported copy.
 
 ## References
 
