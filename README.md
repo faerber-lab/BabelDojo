@@ -28,7 +28,9 @@ A static, dependency-free page (`index.html`, `assets/styles.css`, `assets/app.j
 
 The "live example" is a simulation that runs entirely in the browser: a scripted agent, and a toy "defense" made of four English regular expressions. It shows the failure mode the project tests for. It is **not** an experimental result, and real defenses are learned models rather than keyword lists.
 
-The translations on the page are drafts and have not yet been checked by native speakers. Names, companies and account numbers in the scenario are fictional.
+The page shows a candidate pool of 25 languages and variants (the data lives in `LANGS` in `assets/app.js`); about ten will make the final benchmark. The translations are drafts and have not yet been checked by native speakers. Names, companies and account numbers in the scenario are fictional.
+
+The closing "architecture" section maps safeguards to five points in an agent pipeline and rates how much each depends on the language of the attack. Those ratings are a working hypothesis for the project to test, and the pseudocode there is illustrative.
 
 ## Run it locally
 

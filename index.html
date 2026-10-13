@@ -15,7 +15,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@400;600&family=Noto+Sans+Bengali:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@400;600&family=Noto+Sans+Bengali:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Ethiopic:wght@400;600&family=Noto+Sans+Tamil:wght@400;600&family=Noto+Sans+Thai:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -35,6 +35,7 @@
         <a href="#defenses">Defenses</a>
         <a href="#method">Method</a>
         <a href="#deliverables">Deliverables</a>
+        <a href="#architecture">Architecture</a>
       </nav>
       <div class="nav__actions">
         <a class="btn btn--ghost btn--sm" href="https://github.com/himanshubeniwal/BabelDojo" target="_blank" rel="noopener">
@@ -75,6 +76,24 @@
             <a class="btn btn--ghost btn--lg" href="#method">How it works</a>
           </div>
         </div>
+
+        <aside class="qrcard" id="share" aria-label="Share this page">
+          <img class="qrcard__img" src="assets/qr.svg" alt="QR code linking to https://himanshubeniwal.github.io/BabelDojo/" width="132" height="132">
+          <div class="qrcard__body">
+            <p class="qrcard__title">Scan to open this page on your phone</p>
+            <p class="qrcard__url">himanshubeniwal.github.io/BabelDojo</p>
+            <div class="qrcard__actions">
+              <a class="btn btn--primary btn--sm" href="assets/qr.png" download="babeldojo-qr.png">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.500 11l4.500 4.500 4.500-4.500M5 19.500h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Download QR
+              </a>
+              <button type="button" class="btn btn--ghost btn--sm" id="copyBtn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.500" y="8.500" width="11" height="11" rx="2.500" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M15.500 5.500v-1a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+                <span id="copyLabel">Copy link</span>
+              </button>
+            </div>
+          </div>
+        </aside>
 
         <div class="hero__visual">
           <svg class="hero-art" viewBox="0 0 520 440" role="img" aria-labelledby="heroArtTitle">
@@ -179,11 +198,6 @@
               </g>
             </g></g>
           </svg>
-
-          <a class="qr-mini" href="#share" aria-label="QR code for this page. Jump to the share section.">
-            <img src="assets/qr.svg" alt="" width="84" height="84">
-            <span><strong>Scan me</strong>Open this page on your phone</span>
-          </a>
         </div>
       </div>
 
@@ -309,7 +323,7 @@
                 </div>
                 <div class="ctl">
                   <p class="ctl__label"><span class="ctl__n">2</span> The attacker writes in</p>
-                  <div class="chips" role="group" aria-label="Attack language" id="attackChips"></div>
+                  <div class="chipgroups" role="group" aria-label="Attack language" id="attackChips"></div>
                 </div>
                 <div class="ctl">
                   <p class="ctl__label"><span class="ctl__n">3</span> Defense between the inbox and the agent</p>
@@ -432,10 +446,10 @@
             <div class="card explored reveal">
               <div class="card__head">
                 <h3>What you have tried</h3>
-                <button type="button" class="btn btn--ghost btn--sm" id="runAllBtn">Fill in all 20</button>
+                <button type="button" class="btn btn--ghost btn--sm" id="runAllBtn">Fill in all</button>
               </div>
-              <p class="explored__note">Each run fills one cell. Click a cell to run that combination.</p>
-              <div class="xtable" id="xtable" role="table" aria-label="Outcome of each attack language and defense combination in this toy simulation"></div>
+              <p class="explored__note">Each run fills one cell. Click a cell to run that combination. On a narrow screen, swipe sideways to see every language.</p>
+              <div class="xscroll"><div class="xtable" id="xtable" role="group" aria-label="Outcome of each attack language and defense combination in this toy simulation"></div></div>
               <p class="explored__legend">
                 <span><i class="dot dot--bad"></i> hijacked</span>
                 <span><i class="dot dot--ok"></i> blocked</span>
@@ -447,8 +461,8 @@
               <h3>What this toy shows, and what it cannot</h3>
               <ul>
                 <li><strong>The scripted agent follows every version.</strong> That mirrors the worry: multilingual models can read an instruction in Hindi or Swahili, not only in English.</li>
-                <li><strong>A filter that only knows English phrasing does not.</strong> It stops the English attack and waves the others through.</li>
-                <li><strong>Real defenses are learned models, not keyword lists.</strong> They may generalise across languages, fail quietly, or over-block harmless foreign-language text.</li>
+                <li><strong>A filter that only knows English phrasing does not.</strong> It stops the English attack and waves every other version through.</li>
+                <li><strong>Real defenses are learned models, not keyword lists.</strong> They may generalize across languages, fail quietly, or over-block harmless foreign-language text.</li>
               </ul>
               <p class="takeaway__end">BabelDojo replaces this cartoon with measurements on real agents, real defenses and verified translations.</p>
             </div>
@@ -462,8 +476,8 @@
       <div class="container">
         <header class="section__head reveal">
           <p class="eyebrow">Languages</p>
-          <h2>One attack, written ten ways</h2>
-          <p class="lead">The same instruction in high-resource and lower-resource languages, plus code-switched and romanized text, which is how many people actually write online.</p>
+          <h2>One attack, <span data-lang-count>25</span> ways to write it</h2>
+          <p class="lead">A candidate pool of <span data-lang-count>25</span> languages and variants: high-resource and lower-resource languages, plus code-switched and romanized text, which is how many people actually write online. About ten of them will make the final benchmark.</p>
         </header>
 
         <div class="filters reveal" role="group" aria-label="Filter languages" id="tierFilters">
@@ -475,7 +489,7 @@
         </div>
 
         <div class="langgrid" id="langGrid"></div>
-        <p class="footnote reveal">An indicative selection. The final language list is still open, and every translation on this page is a draft that native speakers will check, which is the first deliverable of the project.</p>
+        <p class="footnote reveal">A candidate pool, not the final list. Every translation on this page is an unverified draft that native speakers still have to check, which is the first deliverable of the project.</p>
       </div>
     </section>
 
@@ -518,7 +532,7 @@
             </div>
             <h3>PIGuard</h3>
             <p>A guardrail classifier that flags injected prompts, trained to avoid over-defense: wrongly flagging harmless text that happens to contain trigger words.</p>
-            <p class="defcard__q"><span>Language question</span>Does it recognise the same injection in Swahili or romanized Hindi, and does over-defense return?</p>
+            <p class="defcard__q"><span>Language question</span>Does it recognize the same injection in Swahili or romanized Hindi, and does over-defense return?</p>
             <a class="link" href="https://aclanthology.org/2025.acl-long.1468/" target="_blank" rel="noopener">Li et al., ACL 2025 <span aria-hidden="true">↗</span></a>
           </article>
 
@@ -666,29 +680,41 @@
       </div>
     </section>
 
-    <!-- ───────────── Share / QR ───────────── -->
-    <section class="section" id="share">
+    <!-- ───────────── Architecture ───────────── -->
+    <section class="section" id="architecture">
       <div class="container">
-        <div class="share reveal">
-          <div class="share__qr">
-            <img src="assets/qr.svg" alt="QR code linking to https://himanshubeniwal.github.io/BabelDojo/" width="240" height="240">
+        <header class="section__head reveal">
+          <p class="eyebrow">Technical deep dive</p>
+          <h2>Where the safeguards sit in an agent</h2>
+          <p class="lead">No single check stops prompt injection. A well-defended agent stacks safeguards at five points between the user's request and a real-world action. Select a layer to see what can be deployed there, what it costs, and how much it depends on reading the attacker's language.</p>
+        </header>
+
+        <div class="arch">
+          <div class="arch__flow reveal" id="archFlow" role="group" aria-label="Safeguard layers in an agent pipeline"></div>
+          <div class="card arch__detail reveal" id="archDetail" aria-live="polite"></div>
+        </div>
+
+        <div class="codecard reveal">
+          <div class="codecard__head">
+            <h3>The same five layers as a guarded agent loop</h3>
+            <span class="tag tag--mono">illustrative pseudocode</span>
           </div>
-          <div class="share__copy">
-            <p class="eyebrow">Take it with you</p>
-            <h2>Scan to open BabelDojo on your phone</h2>
-            <p class="lead">Put the code on a slide or a poster. It points to this page, and the live example works on a phone.</p>
-            <p class="share__url" id="shareUrl">himanshubeniwal.github.io/BabelDojo</p>
-            <div class="share__actions">
-              <a class="btn btn--primary" href="assets/qr.png" download="babeldojo-qr.png">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.500 11l4.500 4.500 4.500-4.500M5 19.500h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Download QR (PNG)
-              </a>
-              <button type="button" class="btn btn--ghost" id="copyBtn">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.500" y="8.500" width="11" height="11" rx="2.500" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M15.500 5.500v-1a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
-                <span id="copyLabel">Copy link</span>
-              </button>
-            </div>
-          </div>
+          <pre class="code" id="archCode" aria-label="Pseudocode of an agent loop with five safeguard layers"></pre>
+          <p class="codecard__note">A sketch of where each safeguard hooks in, not code from this project. Real systems choose a subset. CaMeL, for example, replaces the loop with an interpreter that runs a plan written before any data is read. Click a highlighted line to jump to its layer.</p>
+        </div>
+
+        <div class="lessons">
+          <article class="lesson lesson--warn reveal">
+            <p class="lesson__tags"><span>2</span><span>3</span> layers that read the text</p>
+            <h3>Only as good as their grasp of the language</h3>
+            <p>Screening and marking work on the words themselves. A detector has to recognize an instruction in Swahili or romanized Hindi, and a model has to keep treating marked Arabic as inert data. These are the layers most likely to move when the attack leaves English.</p>
+          </article>
+          <article class="lesson lesson--ok reveal">
+            <p class="lesson__tags"><span>1</span><span>4</span><span>5</span> layers that constrain the action</p>
+            <h3>Indifferent to wording by construction</h3>
+            <p>Scoping, behavior checks and action policies look at tools, calls and data flow, not at phrasing. They should hold across languages, although they can still cost utility when the user's own request is not in English.</p>
+          </article>
+          <p class="lessons__end reveal">These exposure ratings are a working hypothesis, not a finding. BabelDojo exists to measure them. If they hold, the practical advice is short: never rely only on a layer that has to understand the attacker's words.</p>
         </div>
       </div>
     </section>
