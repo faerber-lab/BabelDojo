@@ -1,0 +1,58 @@
+# BabelDojo
+
+**Do prompt-injection defenses for LLM agents survive outside English?**
+
+Live site: **https://himanshubeniwal.github.io/BabelDojo/**
+
+<a href="https://himanshubeniwal.github.io/BabelDojo/"><img src="assets/qr.png" alt="QR code linking to the BabelDojo site" width="180"></a>
+
+## The project
+
+Tool-using agents read emails, web pages and documents that an attacker can write. Instructions hidden in that data (indirect prompt injection) can hijack the agent into sending money or leaking files. Nearly every benchmark and defense has been tested only in English.
+
+BabelDojo extends the [AgentDojo](https://agentdojo.spylab.ai/) benchmark with injections in about ten languages, from high- to low-resource, plus code-switched and romanized text. It measures how attack success, task utility and defense performance change with the language of the attack.
+
+Planned deliverables:
+
+1. A multilingual extension of AgentDojo's injection tasks, with native-speaker spot checks.
+2. An evaluation of 3–4 open models and one API model against at least 5 defenses (for example tool filter, spotlighting, PIGuard, DataSentinel, MELON, CaMeL).
+3. An analysis of the case where the attack language differs from the user's language.
+4. Released code and data.
+5. A final report in ACL format, aimed at an ACL/EMNLP submission.
+
+**Status:** the experiments have not been run yet. This repository currently holds the project website only.
+
+## About the website
+
+A static, dependency-free page (`index.html`, `assets/styles.css`, `assets/app.js`).
+
+The "live example" is a simulation that runs entirely in the browser: a scripted agent, and a toy "defense" made of four English regular expressions. It shows the failure mode the project tests for. It is **not** an experimental result, and real defenses are learned models rather than keyword lists.
+
+The translations on the page are drafts and have not yet been checked by native speakers. Names, companies and account numbers in the scenario are fictional.
+
+## Run it locally
+
+```bash
+python3 -m http.server 4173
+```
+
+Then open http://localhost:4173.
+
+## Regenerate the QR code
+
+```bash
+pip install segno
+python tools/make_qr.py                # default: the GitHub Pages URL
+python tools/make_qr.py https://example.org/other-url
+```
+
+This writes `assets/qr.svg` (used on the page) and `assets/qr.png` (for slides and posters).
+
+## References
+
+- Debenedetti et al., *AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents*, NeurIPS 2024. [arXiv:2406.13352](https://arxiv.org/abs/2406.13352)
+- Hines et al., *Defending Against Indirect Prompt Injection Attacks With Spotlighting*, 2024. [arXiv:2403.14720](https://arxiv.org/abs/2403.14720)
+- Li et al., *PIGuard: Prompt Injection Guardrail via Mitigating Overdefense for Free*, ACL 2025. [ACL Anthology](https://aclanthology.org/2025.acl-long.1468/)
+- Liu et al., *DataSentinel: A Game-Theoretic Detection of Prompt Injection Attacks*, IEEE S&P 2025. [arXiv:2504.11358](https://arxiv.org/abs/2504.11358)
+- Zhu et al., *MELON: Provable Defense Against Indirect Prompt Injection Attacks in AI Agents*, ICML 2025. [arXiv:2502.05174](https://arxiv.org/abs/2502.05174)
+- Debenedetti et al., *Defeating Prompt Injections by Design* (CaMeL), 2025. [arXiv:2503.18813](https://arxiv.org/abs/2503.18813)
