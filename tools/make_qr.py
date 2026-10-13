@@ -11,7 +11,7 @@ from pathlib import Path
 
 import segno
 
-URL = sys.argv[1] if len(sys.argv) > 1 else "https://himanshubeniwal.github.io/BabelDojo/"
+URL = sys.argv[1] if len(sys.argv) > 1 else "https://faerber-lab.github.io/BabelDojo/"
 INK = "#0E1726"
 OUT = Path(__file__).resolve().parent.parent / "assets"
 

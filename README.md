@@ -2,9 +2,9 @@
 
 **Do prompt-injection defenses for LLM agents survive outside English?**
 
-Live site: **https://himanshubeniwal.github.io/BabelDojo/**
+Live site: **https://faerber-lab.github.io/BabelDojo/**
 
-<a href="https://himanshubeniwal.github.io/BabelDojo/"><img src="assets/qr.png" alt="QR code linking to the BabelDojo site" width="180"></a>
+<a href="https://faerber-lab.github.io/BabelDojo/"><img src="assets/qr.png" alt="QR code linking to the BabelDojo site" width="180"></a>
 
 ## The project
 

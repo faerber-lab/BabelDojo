@@ -988,7 +988,7 @@
 
   const copyBtn = $('#copyBtn');
   const copyLabel = $('#copyLabel');
-  const SITE_URL = 'https://himanshubeniwal.github.io/BabelDojo/';
+  const SITE_URL = 'https://faerber-lab.github.io/BabelDojo/';
   copyBtn.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(SITE_URL);
